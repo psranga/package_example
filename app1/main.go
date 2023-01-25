@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/psranga/package_example/formatter"
-	"github.com/psranga/package_example/math"
+	"github.com/psranga/package_example/liba/formatter"
+	"github.com/psranga/package_example/liba/math"
 )
 
 func main() {
