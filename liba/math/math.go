@@ -1,5 +1,5 @@
 package math
 
 func Double(a int) int {
-	return a * 3
+	return a * 4
 }
