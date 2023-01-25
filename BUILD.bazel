@@ -1,6 +1,26 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+#load("@io_bazel_rules_go//go:def.bzl", "go_binary")
+#
+#go_binary(
+#    name = "hello",
+#    srcs = ["hello.go"],
+#)
+
+load("@bazel_gazelle//:def.bzl", "gazelle")
+
+# gazelle:prefix github.com/psranga/package_example
+gazelle(name = "gazelle")
+
+go_library(
+    name = "package_example_lib",
+    srcs = ["hello.go"],
+    importpath = "github.com/psranga/package_example",
+    visibility = ["//visibility:private"],
+)
 
 go_binary(
-    name = "hello",
-    srcs = ["hello.go"],
+    name = "package_example",
+    embed = [":package_example_lib"],
+    visibility = ["//visibility:public"],
 )

@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "app1_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/psranga/package_example/app1",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//liba/formatter",
+        "//liba/math",
+    ],
+)
+
+go_binary(
+    name = "app1",
+    embed = [":app1_lib"],
+    visibility = ["//visibility:public"],
+)
